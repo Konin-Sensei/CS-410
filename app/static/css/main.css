@@ -1,0 +1,32 @@
+#logo{
+    display: block;
+    float: right;
+    background-color: white;
+}
+#logo-img{
+    max-height: 50px;
+}
+.nav-item:hover{
+    background-color: white;
+}
+.nav-item{
+    height: inherit;
+}
+.navbar-nav.mr-auto{
+    height: inherit;
+}
+#nav-text:hover{
+    color: maroon;
+    border: black;
+}
+#nav-text{
+    color: white;
+    font-weight: bold;
+    height: inherit;
+    padding: 22px 10px;
+    font-size: 20px;
+}
+nav{
+    background-color: maroon;
+    height: 70px;
+}
