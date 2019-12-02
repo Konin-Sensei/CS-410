@@ -20,7 +20,7 @@ def parameters():
     return render_template('parameters.html')
 
 @application.route('/try', methods = ['GET', 'POST'])
-def upload_file():
+def try():
     if request.method == 'POST':
         f = request.files['file']
     return render_template('index.html')
