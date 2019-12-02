@@ -23,4 +23,4 @@ def parameters():
 def upload_file():
     if request.method == 'POST':
         f = request.files['file']
-    return render_template("index.html")
+    return render_template('index.html')
