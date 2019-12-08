@@ -4,17 +4,15 @@ from flask import render_template, jsonify, redirect, send_file, request
 from werkzeug.utils import secure_filename
 import pandas as pd
 import matplotlib.pyplot as plt
+import plotly
+import plotly.graph_objs as go
+import xlrd
+import pandas as pd
+import numpy as np
+import json
+from app.graph import create_plot
+from app.graph import create_plot2
 
-books = [
-    {
-        'name': 'Grener',
-        'price': 10.00
-    },
-    {
-        'name': 'Cow',
-        'price': 11.00
-    }
-]
 
 
 @application.route('/')
@@ -43,22 +41,8 @@ def parameters():
 def upload_file():
     if request.method == 'POST':
         f = request.files['file']
-        df = pd.read_csv(request.files.get('file'))
-        graph1 = plt.plot(range(100))
-    return render_template("graphing10.html")
+        df = pd.read_excel(request.files.get('file'))
+        choro = create_plot2(df)
+        choice = create_plot(df)
+    return render_template('plotme.html', plot=choro, plot1=choice)
 
-
-@application.route('/pygalexample')
-def pygalexample():
-    try:
-        graph = pygal.Line()
-        graph.title = '% Change Coolness of programming languages over time.'
-        graph.x_labels = ['2011', '2012', '2013', '2014', '2015', '2016']
-        graph.add('Python', [15, 31, 89, 200, 356, 900])
-        graph.add('Java', [15, 45, 76, 80, 91, 95])
-        graph.add('C++', [5, 51, 54, 102, 150, 201])
-        graph.add('All others combined!', [5, 15, 21, 55, 92, 105])
-        graph_data = graph.render_data_uri()
-        return render_template("graphing.html", graph_data=graph_data)
-    except Exception as e:
-        return str(e)

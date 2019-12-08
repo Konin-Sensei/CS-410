@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Coropleth</h1>
+<div class="chart" id="choropleth">
+    <script>
+        var graphs = {{plot | safe}};
+        Plotly.plot('choropleth',graphs,{});
+    </script>
+</div>
+<div class="chart" id="bargraph">
+    <script>
+        var graphs1 = {{plot1 | safe}};
+        Plotly.plot('bargraph',graphs1,{});
+    </script>
+</div>
+
+{% endblock %}
